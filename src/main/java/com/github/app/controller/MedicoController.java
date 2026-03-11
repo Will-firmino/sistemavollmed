@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.app.model.medico.DadosCadastroMedico;
 
-@RestController // SPRING WEB- Informa para o Springboot que abaixo é uma classe controladora de requisições (GET-POST-PUT-DELETE).
+@RestController // SSPRING WEB- Informa para o Springboot que abaixo é uma classe controladora de requisições (GET-POST-PUT-DELETE).
 @RequestMapping("medicos") // // SPRING WEB- Cria um caminho(endpoint) para a classe MedicoController. 
 public class MedicoController {
     
