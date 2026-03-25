@@ -92,6 +92,12 @@
       <scope>test</scope>
     </dependency>
 
+	<!-- Responsável pelas validações das informações que estão chegando pelo frontend/simulador de requisição -->
+	<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
 	</dependencies>
 
 	<build>
