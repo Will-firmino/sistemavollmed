@@ -1,5 +1,6 @@
 package com.github.app.model.endereco;
 
+// Classe DTO
 public record DadosCadastroEndereco(
     String logradouro,
     String bairro,
@@ -7,6 +8,8 @@ public record DadosCadastroEndereco(
     String complemento,
     String cidade,
     String uf
+
+    
 ) {
     
 }
