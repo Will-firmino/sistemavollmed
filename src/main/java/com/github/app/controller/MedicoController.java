@@ -3,6 +3,8 @@ package com.github.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import com.github.app.model.medico.DadosCadastroMedico;
@@ -27,11 +29,22 @@ public class MedicoController {
         return repository.findAll();
     }
 
-    @GetMapping           
+    @GetMapping("listar")           
     public List<DadosListagemMedico> listar() {
         return repository.findAll().stream().map(DadosListagemMedico::new).toList();
-        
+        // findAll() -> Método que retorna uma lista de objetos do tipo DadosListagemMedico. 
+        // stream() -> Método utilizado para transformar a lista em um fluxo de dados, permitindo aplicar operações de transformação.
+        // map(DadosListagemMedico::new) -> Método utilizado para converter cada objeto do tipo medico em um json DadosListagemMedico, utilizando o constructor que criamos em DadosListagemMedico.
+        // toList() -> Método utilizado para coletar os resultados em uma nova lista do tipo DadosListagemMedico, que é o formato que queremos retornar para a API.
     }
+
+     @GetMapping         
+    public Page<DadosListagemMedico> listarPorPagina(Pageable paginacao) {
+        return repository.findAll(paginacao).map(DadosListagemMedico::new);
+        //return repository.findAll().stream().map(DadosListagemMedico::new).toList();
+    }
+
+
 
     
 
