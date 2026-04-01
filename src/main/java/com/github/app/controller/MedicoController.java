@@ -49,6 +49,7 @@ public class MedicoController {
     public void atualizar(@RequestBody DadosAtualizacaoMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         // var é uma palavra reservada em Java que permite declarar uma variável sem especificar seu tipo. O tipo da variável é inferido pelo compilador com base no valor que foi atribuído a ela.
+        medico.atualizarInformacoes(dados);
     }
 
 
