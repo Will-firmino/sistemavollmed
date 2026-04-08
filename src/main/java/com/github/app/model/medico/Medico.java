@@ -22,8 +22,10 @@ public class Medico {
 
     private String nome;
     private String email;
+    private String telefone;
     private String crm;
- 
+    private Boolean ativo = true;
+
     @Enumerated(EnumType.STRING) // SPRING JPA - Informa para o BD que o atributo é do tipo enum.
     private Especialidade especialidade;
 
@@ -34,6 +36,7 @@ public class Medico {
     public Medico(DadosCadastroMedico dados) {
         this.nome = dados.nome();
         this.email = dados.email();
+        this.telefone = dados.telefone();
         this.crm = dados.crm();
         this.especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
@@ -51,8 +54,11 @@ public class Medico {
         if(dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
         }
+    }
 
-
+    // Método responsável por alterar o status do médico de true para false
+    public void exclusaoLogica() {
+        this.ativo = false;
     }
 
 
