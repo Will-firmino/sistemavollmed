@@ -1,5 +1,8 @@
 package com.github.app.model.paciente;
 
+import com.github.app.model.endereco.Endereco;
+
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,5 +26,12 @@ public class Paciente {
     @Id // SPRING JPA - Informa para o BD que a chave primária PK, é o id.
     @GeneratedValue(strategy = GenerationType.IDENTITY) // SPRING JPA - Cria o id único de forma automática
     private Integer id; // Não está vindo do insomnia 
+    private String nome;
+    private String email;
+    private String telefone;
+    private String cpf;
+
+    @Embedded
+    private Endereco endereco;
     
 }
