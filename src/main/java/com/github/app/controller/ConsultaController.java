@@ -33,8 +33,8 @@ public class ConsultaController {
 
         // agendar a consulta com o paciente e o medico buscados
         var consulta = new Consulta(dados);
-        // consulta.setMedico(medico);
-        // consulta.setPaciente(paciente);
+        consulta.setMedico(medico);
+        consulta.setPaciente(paciente);
 
         return consultaRepository.save(consulta);
 

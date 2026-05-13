@@ -1,6 +1,7 @@
 package com.github.app.model.paciente;
 
 import com.github.app.model.endereco.Endereco;
+import com.github.app.model.medico.DadosCadastroMedico;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor // Lombok - Cria um construtor com nenhum atributo.
 @EqualsAndHashCode(of = "id") // Lombok - Cria uma lógica de comparação através do campo "id".
 @Entity // SPRING JPA - Informa que a classe abaixo é uma entidade, ou seja, será uma tabela no BD.
-@Table(name = "medicos") // SPRING JPA *Opcional, gera uma tabela com o nome medicos no BD.
+@Table(name = "pacientes") // SPRING JPA *Opcional, gera uma tabela com o nome medicos no BD.
 public class Paciente {
 
     @Id // SPRING JPA - Informa para o BD que a chave primária PK, é o id.
@@ -33,5 +34,26 @@ public class Paciente {
 
     @Embedded
     private Endereco endereco;
+
+    public Paciente(DadosCadastroPaciente dados) {
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.telefone = dados.telefone();
+        this.cpf = dados.cpf();
+        this.endereco = new Endereco(dados.endereco());
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoPaciente dados) {
+        if(dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if(dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
+        if(dados.endereco() != null) {
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
+
     
 }

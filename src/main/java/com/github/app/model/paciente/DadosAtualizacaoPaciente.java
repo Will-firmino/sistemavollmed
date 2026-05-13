@@ -1,5 +1,13 @@
 package com.github.app.model.paciente;
 
-public record DadosAtualizacaoPaciente() {
+import com.github.app.model.endereco.DadosCadastroEndereco;
+
+public record DadosAtualizacaoPaciente(
+    Integer id,
+    String nome,
+    String telefone,
+    DadosCadastroEndereco endereco
+
+) {
     
 }
