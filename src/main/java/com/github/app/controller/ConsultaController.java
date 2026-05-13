@@ -37,9 +37,6 @@ public class ConsultaController {
         consulta.setPaciente(paciente);
 
         return consultaRepository.save(consulta);
-
-
-
     }
 
 
